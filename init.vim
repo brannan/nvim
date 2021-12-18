@@ -1,6 +1,6 @@
 " Specify a directory for plugins
-" https://github.com/junegunn/vim-plug
 " https://www.youtube.com/watch?v=ZEFXeRIFvN0
+" https://github.com/junegunn/vim-plug
 " https://youtu.be/ZEFXeRIFvN0?t=1392
 " https://www.youtube.com/watch?v=gnupOrSEikQ
 set nocompatible
