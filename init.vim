@@ -92,7 +92,7 @@ noremap <silent> ]B :blast<CR>
 
 call plug#begin('~/.vim/plugged')
   Plug 'preservim/nerdtree'
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}    
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'ctrlpvim/ctrlp.vim'
   Plug 'morhetz/gruvbox'
   Plug 'HerringtonDarkholme/yats.vim'
@@ -170,7 +170,7 @@ colorscheme gruvbox
 map <silent> <C-n> :NERDTreeFocus<CR>
 " sync open file with NERDTree
 " Check if NERDTree is open or active
-function! IsNERDTreeOpen()        
+function! IsNERDTreeOpen()
   return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
 endfunction
 
@@ -186,16 +186,16 @@ endfunction
 " Highlight currently open buffer in NERDTree
 " autocmd BufEnter * call SyncTree()
 
-" CoC extensions 
+" CoC extensions
 let g:coc_global_extensions = [
       \  'coc-snippets',
       \  'coc-eslint',
-      \  'coc-tsserver', 
-      \  'coc-css', 
-      \  'coc-html', 
-      \  'coc-json', 
+      \  'coc-tsserver',
+      \  'coc-css',
+      \  'coc-html',
+      \  'coc-json',
       \  'coc-prettier',
-      \ ]  
+      \ ]
 
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
 " unicode characters in the file autoload/float.vim
