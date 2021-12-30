@@ -72,6 +72,8 @@ set hlsearch
 " Set the commands to save in history default number is 20.
 set history=1000
 
+set path+=**
+
 " Enable auto completion menu after pressing TAB.
 set wildmenu
 
@@ -99,6 +101,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-fugitive' " git
   Plug 'jremmen/vim-ripgrep'
   Plug 'mattn/emmet-vim'
+  Plug 'vim-test/vim-test'
 call plug#end()
 
 
@@ -150,6 +153,14 @@ noremap <c-down> <c-w>-
 noremap <c-left> <c-w>>
 noremap <c-right> <c-w><
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+
+" vim-test
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+nmap <silent> <leader>a :TestSuite<CR>
+nmap <silent> <leader>l :TestLast<CR>
+nmap <silent> <leader>g :TestVisit<CR>
+let test#strategy = "neovim"
 
 " NERDTree specific mappings.
 let g:NERDTreeGitStatusWithFlags = 1
