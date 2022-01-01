@@ -32,11 +32,15 @@ set cursorcolumn
 " Set shift width to 4 spaces.
 set shiftwidth=2
 
-" Set tab width to 4 columns.
+" Set tab width to 2 columns.
 set tabstop=2
+set softtabstop=2
 
 " Use space characters instead of tabs.
 set expandtab
+
+" Try to indent
+set smartindent
 
 " Do not save backup files.
 set nobackup
@@ -72,6 +76,7 @@ set hlsearch
 " Set the commands to save in history default number is 20.
 set history=1000
 
+" make :file searches work in pwd
 set path+=**
 
 " Enable auto completion menu after pressing TAB.
@@ -99,6 +104,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'morhetz/gruvbox'
   Plug 'HerringtonDarkholme/yats.vim'
   Plug 'tpope/vim-fugitive' " git
+  Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-commentary'
   Plug 'jremmen/vim-ripgrep'
   Plug 'mattn/emmet-vim'
   Plug 'vim-test/vim-test'
