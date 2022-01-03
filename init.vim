@@ -103,6 +103,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'ctrlpvim/ctrlp.vim'
   Plug 'morhetz/gruvbox'
   Plug 'HerringtonDarkholme/yats.vim'
+  Plug 'sheerun/vim-polyglot'
   Plug 'tpope/vim-fugitive' " git
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-commentary'
@@ -129,7 +130,7 @@ nnoremap <leader>\ ``
 nnoremap <silent> <leader>p :%w !lp<CR>
 
 " Type jj to exit insert mode quickly.
-inoremap jj <Esc>
+" inoremap jj <Esc>
 
 " Press the space bar to type the : character in command mode.
 nnoremap <space> :
@@ -203,7 +204,7 @@ function! SyncTree()
 endfunction
 
 " Highlight currently open buffer in NERDTree
-" autocmd BufEnter * call SyncTree()
+autocmd BufEnter * call SyncTree()
 
 " CoC extensions
 let g:coc_global_extensions = [
