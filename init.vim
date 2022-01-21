@@ -99,6 +99,7 @@ noremap <silent> ]B :blast<CR>
 
 call plug#begin('~/.vim/plugged')
   Plug 'preservim/nerdtree'
+  Plug 'preservim/nerdcommenter'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'ctrlpvim/ctrlp.vim'
   Plug 'morhetz/gruvbox'
@@ -110,6 +111,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'jremmen/vim-ripgrep'
   Plug 'mattn/emmet-vim'
   Plug 'vim-test/vim-test'
+  Plug 'vim-airline/vim-airline'
 call plug#end()
 
 
@@ -170,13 +172,6 @@ nmap <silent> <leader>l :TestLast<CR>
 nmap <silent> <leader>g :TestVisit<CR>
 let test#strategy = "neovim"
 
-" NERDTree specific mappings.
-let g:NERDTreeGitStatusWithFlags = 1
-
-" Have nerdtree ignore certain files and directories.
-let NERDTreeIgnore=['\.git$', '^node_modules$', '\.db$']
-
-" }}}
 
 " Prettier command
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
@@ -186,8 +181,17 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " setup gruvbox
 colorscheme gruvbox
 
+" NERDTree specific mappings.
+let g:NERDTreeGitStatusWithFlags = 1
+
+" Have nerdtree ignore certain files and directories.
+let NERDTreeIgnore=['\.git$', '^node_modules$', '\.db$']
+
 " nerdtree key map
-map <silent> <C-n> :NERDTreeFocus<CR>
+nmap <silent> <C-n> :NERDTreeFocus<CR>
+vmap ++ <plug>NERDCommenterToggle
+nmap ++ <plug>NERDCommenterToggle
+
 " sync open file with NERDTree
 " Check if NERDTree is open or active
 function! IsNERDTreeOpen()
@@ -204,7 +208,7 @@ function! SyncTree()
 endfunction
 
 " Highlight currently open buffer in NERDTree
-autocmd BufEnter * call SyncTree()
+autocmd BufRead * call SyncTree()
 
 " CoC extensions
 let g:coc_global_extensions = [
@@ -358,8 +362,12 @@ xmap <silent> <C-s> <Plug>(coc-range-select)
 command! -nargs=0 Format :call CocAction('format')
 
 " Add `:Fold` command to fold current buffer.
+" from https://alldrops.info/posts/vim-drops/2018-04-25_javascript-folding-on-vim/
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 set foldmethod=indent
+" set foldcolumn=1
+" let javaScript_fold=1
+" set foldlevelstart=2
 
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
@@ -388,19 +396,22 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 " STATUS LINE ------------------------------------------------------------ {{{
 
 " Clear status line when vimrc is reloaded.
-set statusline=
+" set statusline=
 
 " Status line left side.
-set statusline+=\ %F\ %M\ %Y\ %R
+" set statusline+=\ %F\ %M\ %Y\ %R
 
 " Use a divider to separate the left side from the right side.
-set statusline+=%=
+" set statusline+=%=
 
 " Status line right side.
 "set statusline+=\ ascii:\ %b\ hex:\ 0x%B\ row:\ %l\ col:\ %c\ percent:\ %p%%
 
 " Show the status on the second to last line.
-set laststatus=2
+" set laststatus=2
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 " }}}
 
