@@ -95,11 +95,16 @@ noremap <silent> ]b :bnext<CR>
 noremap <silent> [B :bfirst<CR>
 noremap <silent> ]B :blast<CR>
 
+" terminal mode mappings
+if has('nvim')
+  tnoremap <Esc> <C-\><C-n>
+  tnoremap <C-v><Esc> <Esc>
+endif
+
 " PLUGINS ---------------------------------------------------------------- {{{
 
 call plug#begin('~/.vim/plugged')
   Plug 'preservim/nerdtree'
-  Plug 'preservim/nerdcommenter'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'ctrlpvim/ctrlp.vim'
   Plug 'morhetz/gruvbox'
@@ -109,7 +114,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-commentary'
   Plug 'jremmen/vim-ripgrep'
-  Plug 'mattn/emmet-vim'
   Plug 'vim-test/vim-test'
   Plug 'vim-airline/vim-airline'
 call plug#end()
