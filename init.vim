@@ -16,9 +16,9 @@ filetype indent on
 syntax on
 
 " Show column 80
-set colorcolumn=80
-set background=dark
-highlight ColorColumn ctermbg=0 guibg=lightgrey
+" set colorcolumn=80
+" set background=dark
+" highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 " Add numbers to the file.
 set number
@@ -104,18 +104,22 @@ endif
 " PLUGINS ---------------------------------------------------------------- {{{
 
 call plug#begin('~/.vim/plugged')
-  Plug 'preservim/nerdtree'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'preservim/nerdtree'
+  Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+  Plug 'Xuyuanp/nerdtree-git-plugin'
+
   Plug 'ctrlpvim/ctrlp.vim'
-  Plug 'morhetz/gruvbox'
-  Plug 'HerringtonDarkholme/yats.vim'
-  Plug 'sheerun/vim-polyglot'
+  Plug 'ryanoasis/vim-devicons'
+
   Plug 'tpope/vim-fugitive' " git
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-commentary'
   Plug 'jremmen/vim-ripgrep'
   Plug 'vim-test/vim-test'
   Plug 'vim-airline/vim-airline'
+
+  Plug 'morhetz/gruvbox'
 call plug#end()
 
 
@@ -185,34 +189,11 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " setup gruvbox
 colorscheme gruvbox
 
-" NERDTree specific mappings.
+" NERDTree-specific settings
 let g:NERDTreeGitStatusWithFlags = 1
-
-" Have nerdtree ignore certain files and directories.
 let NERDTreeIgnore=['\.git$', '^node_modules$', '\.db$']
-
-" nerdtree key map
-nmap <silent> <C-n> :NERDTreeFocus<CR>
-vmap ++ <plug>NERDCommenterToggle
-nmap ++ <plug>NERDCommenterToggle
-
-" sync open file with NERDTree
-" Check if NERDTree is open or active
-function! IsNERDTreeOpen()
-  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
-endfunction
-
-" Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
-" file, and we're not in vimdiff
-function! SyncTree()
-  if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
-    NERDTreeFind
-    wincmd p
-  endif
-endfunction
-
-" Highlight currently open buffer in NERDTree
-autocmd BufRead * call SyncTree()
+nmap <C-n> :NERDTreeToggle<CR>
+nmap <silent> <leader>n :NERDTreeFind<CR>
 
 " CoC extensions
 let g:coc_global_extensions = [
