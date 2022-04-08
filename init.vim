@@ -17,8 +17,8 @@ syntax on
 
 " Show column 80
 " set colorcolumn=80
-" set background=dark
-" highlight ColorColumn ctermbg=0 guibg=lightgrey
+" set termguicolor 
+highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 " Add numbers to the file.
 set number
@@ -106,11 +106,10 @@ endif
 call plug#begin('~/.vim/plugged')
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'preservim/nerdtree'
-  Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
   Plug 'Xuyuanp/nerdtree-git-plugin'
-
+  Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+  "light Plug 'ryanoasis/vim-devicons'
   Plug 'ctrlpvim/ctrlp.vim'
-  Plug 'ryanoasis/vim-devicons'
 
   Plug 'tpope/vim-fugitive' " git
   Plug 'tpope/vim-surround'
@@ -126,7 +125,7 @@ call plug#end()
 " }}}
 
  " MAPPINGS --------------------------------------------------------------- {{{
-
+ "
 " Set the backslash as the leader key.
 let mapleader = ","
 
@@ -187,7 +186,10 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " CoC settings coc and extensions -----------------------------------------{{{
 
 " setup gruvbox
+set background=dark
 colorscheme gruvbox
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+set termguicolors
 
 " NERDTree-specific settings
 let g:NERDTreeGitStatusWithFlags = 1
