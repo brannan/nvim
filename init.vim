@@ -114,9 +114,11 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-fugitive' " git
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-commentary'
+  Plug 'tpope/vim-obsession'
   Plug 'jremmen/vim-ripgrep'
   Plug 'vim-test/vim-test'
   Plug 'vim-airline/vim-airline'
+  Plug 'mattn/emmet-vim'
 
   Plug 'morhetz/gruvbox'
 call plug#end()
