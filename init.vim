@@ -80,7 +80,7 @@ set history=1000
 set path+=**
 
 " Enable auto completion menu after pressing TAB.
-set wildmenu
+"set wildmenu
 
 " Make wildmenu behave like similar to Bash completion.
 set wildmode=list:longest
@@ -245,11 +245,11 @@ endif
 " other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
+      \ PSB_check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-function! s:check_back_space() abort
+function! PSB_check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
