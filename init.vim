@@ -80,7 +80,7 @@ set history=1000
 set path+=**
 
 " Enable auto completion menu after pressing TAB.
-"set wildmenu
+set wildmenu
 
 " Make wildmenu behave like similar to Bash completion.
 set wildmode=list:longest
@@ -107,11 +107,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'preservim/nerdtree'
   Plug 'Xuyuanp/nerdtree-git-plugin'
-  Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-  "light Plug 'ryanoasis/vim-devicons'
+  " Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
   Plug 'ctrlpvim/ctrlp.vim'
-
-  Plug 'tpope/vim-fugitive' " git
+  Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-obsession'
@@ -119,7 +117,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-test/vim-test'
   Plug 'vim-airline/vim-airline'
   Plug 'mattn/emmet-vim'
-
   Plug 'morhetz/gruvbox'
 call plug#end()
 
@@ -138,7 +135,7 @@ nnoremap <leader>\ ``
 " View available printers:   lpstat -v
 " Set default printer:       lpoptions -d <printer_name>
 " <silent> means do not display output.
-nnoremap <silent> <leader>p :%w !lp<CR>
+" nnoremap <silent> <leader>p :%w !lp<CR>
 
 " Type jj to exit insert mode quickly.
 " inoremap jj <Esc>
@@ -188,7 +185,7 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " CoC settings coc and extensions -----------------------------------------{{{
 
 " setup gruvbox
-set background=dark
+set background=light
 colorscheme gruvbox
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set termguicolors
